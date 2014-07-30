@@ -1,9 +1,8 @@
 package com.luxoft.hibernate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
+import java.util.Set;
 
 /**
  * @author Artem Loginov(ALohinov@luxoft.com)
@@ -14,18 +13,28 @@ import javax.persistence.Table;
 public class Contact {
 	@Id
 	@Column(name = "ID")
-	Integer id;
+    private Integer id;
 	@Column(name = "FIRST_NAME")
-	String firstName;
+    private String firstName;
 	@Column(name = "LAST_NAME")
-	String lastName;
+    private String lastName;
+    @Column(name = "birth_date")
+    private Date birthDate;
+    @OneToMany(targetEntity = Phone.class, fetch = FetchType.EAGER)
+    @JoinColumn(name ="CONTACT_ID")
+    private Set<Phone> phones;
 
-	@Override
-	public String toString() {
-		return "Contact{" +
-				"id=" + id +
-				", firstName='" + firstName + '\'' +
-				", lastName='" + lastName + '\'' +
-				'}';
-	}
+    public Set<Phone> getPhones() {
+        return phones;
+    }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthDate=" + birthDate +
+                '}';
+    }
 }
