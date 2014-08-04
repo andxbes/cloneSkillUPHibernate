@@ -23,7 +23,7 @@ public class Phone {
     public String toString() {
         return "Phone{" +
                 "userId=" + user +
-                ", number='" + number + '\'' +
-                '}';
+                ", number='" + number + "\'" +
+                "}\n";
     }
 }
