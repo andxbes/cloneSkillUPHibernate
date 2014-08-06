@@ -15,12 +15,16 @@ public class Contact {
     @Id
     @Column(name = "ID")
     private Integer id;
+    
     @Column(name = "FIRST_NAME")
     private String firstName;
+    
     @Column(name = "LAST_NAME")
     private String lastName;
+    
     @Column(name = "birth_date")
     private Date birthDate;
+    
     @OneToMany(targetEntity = Phone.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "CONTACT_ID")
     private Set<Phone> phones;
